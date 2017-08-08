@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TestUser;
+use App\User;
 use Storage;
 use Session;
 
@@ -16,16 +16,16 @@ class PostController extends Controller
     	return $request->all();
     }
 
-    public function userSignup(Request $request, TestUser $data){
+    public function userSignup(Request $request, User $data){
     	# code...
-    	$data = new TestUser;
+    	$data = new User;
     	$data->name = $request->name;
     	$data->email = $request->email;
     	$data->password = $request->password;
     	$data->save();
 
     	//return back
-        Session::flash('status', 'Thanks, you have successfully signup ATT'); 
+        Session::flash('status', 'Thanks, you have successfully signup'); 
     	return back();
     }
 }

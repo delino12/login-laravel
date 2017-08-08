@@ -34,11 +34,14 @@
                         <div class="form-group">
                             <button class="btn btn-info col-md-6">Create Account</button>
                         </div>
-                        @if(Session::has('status'))
-                            <div class="alert alert-info">
-                                <p>{{ Session::get('status') }}</p>
-                            </div>
-                        @endif
+                        <div class="form-group">
+                            @if(Session::has('status'))
+                                <div class="alert alert-info">
+                                    <p>{{ Session::get('status') }}</p>
+                                </div>
+                            @endif  
+                        </div>
+                        
                     </form>
                 </div>
             </div>
