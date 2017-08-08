@@ -14,13 +14,23 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h1 class="lead">Welcome ATT Sign Up - Login</h1>
-                <div class="panel-body">
-                    <a href="/login"><button class="btn btn-primary">Login</button></a>
-                    <a href="/register"><button class="btn btn-primary">Register</button></a>
+            @if(Auth::check())
+                <div class="col-md-6 col-md-offset-3">
+                    <h1 class="lead">Welcome ATT Login and Signup</h1>
+                    <div class="panel-body">
+                        Welcome to Dashboard
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="col-md-6 col-md-offset-3">
+                    <h1 class="lead">Welcome ATT Sign Up - Login</h1>
+                    <div class="panel-body">
+                        <a href="/login"><button class="btn btn-primary">Login</button></a>
+                        <a href="/register"><button class="btn btn-primary">Register</button></a>
+                    </div>
+                </div>
+            @endif
+            
         </div>
     </div>
 @stop

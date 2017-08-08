@@ -43,6 +43,13 @@
                         <div class="alert alert-info">
                             <p>{{ Session::get('status') }}</p>
                         </div>
+                        <a href="/login"><button class="btn btn-info col-md-6">Continue as {{ Session::get('name') }}</button></a>
+                    @endif
+
+                    @if(Session::has('userExistError'))
+                        <div class="alert alert-warning">
+                            <p>{{ Session::get('userExistError') }}</p>
+                        </div>
                     @endif
                 </div>
             </div>
