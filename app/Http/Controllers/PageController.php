@@ -21,7 +21,10 @@ class PageController extends Controller
 
     public function login()
     {
-    	# code...
     	return view('login');
+    }
+
+    public function register(){
+    	return view('register');
     }
 }
