@@ -32,6 +32,15 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="panel-body">
+                    <hr />
+                    @if(Session::has('loginError'))
+                        <div class="alert alert-warning">
+                            <p>{{ Session::get('loginError') }}</p>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

@@ -14,19 +14,27 @@ class PostController extends Controller
     {
     	# get all the request from login form
     	$email = $request->email;
-    	$password = $request->password;
+    	$password = md5($request->password);
 
-    	# check user if match with database user
-    	$users = User::where('email', $email)->first();
+    	# verify user exits
+		# check user if match with database user
+    	$users = User::where('email', $email)
+    	->where('password', $password)
+    	->get();
+
+    	if(sizeof($users) == 0){
+    		$msg = "Invalid username or password";
+    		# return error sending messages
+    		Session::flash('loginError', $msg);
+			return back();
+    	}else{
+    		return "User is valid proccess login authentication";
+    	}
     }
 
     public function userSignup(Request $request, User $data){
-    	# code...
-    	# get all the request from login form
-    	$email = $request->email;
-
     	# check user if match with database user
-    	$users = User::where('email', $email)->get();
+    	$users = User::where('email', $request->email)->get();
 
     	# check if email is more than 1
     	if(sizeof($users) > 0){
