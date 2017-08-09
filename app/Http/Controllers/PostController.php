@@ -3,41 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Storage;
 use Session;
 
 class PostController extends Controller
 {
-    //
-    public function userLogin(Request $request)
-    {
-    	# get all the request from login form
-    	$email = $request->email;
-    	$password = md5($request->password);
-
-    	# verify user exits
-		# check user if match with database user
-    	$users = User::where('email', $email)
-    	->where('password', $password)
-    	->get();
-
-    	if(sizeof($users) == 0){
-    		$msg = "Invalid username or password";
-    		# return error sending messages
-    		Session::flash('loginError', $msg);
-			return back();
-    	}else{
-    		// set an authentication 
-    		
-    			// let user know their logged in 
-    			$flashMsg = "you have logged in !";
-	    		return redirect('/')->with('loginStatus', $flashMsg);
-	    		//return redirect('')->intended('dashboard');
-	    	
-    	}
-    }
-
+    
     public function userSignup(Request $request, User $data){
     	# check user if match with database user
     	$users = User::where('email', $request->email)->get();
@@ -54,7 +27,7 @@ class PostController extends Controller
 		$data = new User;
 		$data->name = $request->name;
 		$data->email = $request->email;
-		$data->password = md5($request->password);
+		$data->password = $request->password;
 		$data->save();
 
 		//return back
