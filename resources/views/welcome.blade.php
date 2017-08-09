@@ -14,7 +14,14 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if(Auth::check())
+            <div class="col-md-12">
+                @if(Session::has('loginStatus'))
+                    <div class="alert alert-success">
+                        <p>{{ Session::get('loginStatus') }}</p>
+                    </div>
+                @endif
+            </div>
+            @if(Auth::guest())
                 <div class="col-md-6 col-md-offset-3">
                     <h1 class="lead">Welcome ATT Login and Signup</h1>
                     <div class="panel-body">
@@ -30,7 +37,6 @@
                     </div>
                 </div>
             @endif
-            
         </div>
     </div>
 @stop

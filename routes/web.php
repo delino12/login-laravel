@@ -12,13 +12,17 @@
 */
 
 
+
+# using web middleware
+
 // Authenticate Route First
+Route::get('/', 'PageController@index');
 
 // Load get Request
-Route::get('/', 'PageController@index');
 Route::get('/login', 'PageController@login');
 Route::get('/register', 'PageController@register');
 
 // Load post Request
 Route::post('/login', 'PostController@userLogin'); // this handle login form data
-Route::post('/create', 'PostController@userSignup'); // this handler register form data
+Route::post('/create', 'PostController@userSignup'); // this handler register form data	
+

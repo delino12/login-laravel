@@ -28,7 +28,13 @@ class PostController extends Controller
     		Session::flash('loginError', $msg);
 			return back();
     	}else{
-    		return "User is valid proccess login authentication";
+    		// set an authentication 
+    		
+    			// let user know their logged in 
+    			$flashMsg = "you have logged in !";
+	    		return redirect('/')->with('loginStatus', $flashMsg);
+	    		//return redirect('')->intended('dashboard');
+	    	
     	}
     }
 
